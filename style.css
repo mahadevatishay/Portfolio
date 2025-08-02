@@ -1,0 +1,103 @@
+:root {
+  --main-bg: #f7f9fb;
+  --main-color: #212121;
+  --container-bg: #fff;
+  --shadow: 0 2px 8px #ccd;
+  --accent-dark: #34d399;  /* Green for caret in dark mode */
+}
+
+/* Dark mode overrides */
+body.dark-mode {
+  --main-bg: #181c20;
+  --main-color: #ededed;
+  --container-bg: #22272e;
+  --shadow: 0 2px 8px #233;
+}
+
+/* ===== BASE STYLES ===== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: var(--main-bg);
+  color: var(--main-color);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--container-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 40px;
+}
+
+h1, h2 {
+  color: #0a6d96;
+  margin-top: 0;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 24px;
+  padding-left: 0;
+}
+
+.project {
+  margin-bottom: 24px;
+}
+
+.contact {
+  margin-top: 32px;
+}
+
+.icons {
+  margin-top: 12px;
+}
+
+.icons a {
+  margin-right: 12px;
+  text-decoration: none;
+  color: #0a6d96;
+}
+
+.theme-toggle {
+  text-align: right;
+  margin: 16px 40px 0 0;
+}
+
+@media (max-width:600px){
+  .container {
+    padding: 18px;
+    margin: 20px 12px;
+  }
+  .theme-toggle {
+    margin: 8px 12px 0 0;
+  }
+}
+
+/* ===== BLINKING CARET ANIMATION ===== */
+
+/* Light mode caret animation */
+@keyframes blink-caret-light {
+  from, to { border-color: transparent; }
+  50%      { border-color: white; }
+}
+
+/* Dark mode caret animation */
+@keyframes blink-caret-dark {
+  from, to { border-color: transparent; }
+  50%      { border-color: var(--accent-dark); }
+}
+
+.caret {
+  border-right: 2px solid;
+  padding-right: 4px;
+  animation: blink-caret-light 1s step-end infinite;
+  /* Adjust vertical-align if necessary */
+  vertical-align: bottom;
+}
+
+body.dark-mode .caret {
+  animation: blink-caret-dark 1s step-end infinite;
+}
